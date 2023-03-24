@@ -1,0 +1,36 @@
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawCrosshairs);
+
+    function drawCrosshairs() {
+    var data = new google.visualization.DataTable();
+
+    // addColumn => 
+    data.addColumn('string', '年');
+    data.addColumn('number', '北海道');
+    
+
+    // Graph表示の数値データ => [ x, y ] = [ 年度, 人口数 ] の Setが1つの都道府県で複数
+    data.addRows([
+        ['1965年', 5171800], ['1970年', 5184287], ['1975年', 5338206], ['1980年', 5575989], 
+        ['1985年', 5679439], ['1990年', 5643647], ['1995年', 5692321], ['2000年', 5683062], 
+        ['2005年', 5627737], ['2010年', 5506419], ['2015年', 5381733], ['2020年', 5216615], 
+    ]);
+
+    var options = {
+        hAxis: {
+            title: '年'
+        },
+        vAxis: {
+            title: '人口数'
+        },
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+    }
+  </script>
+
+<div id="chart_div" style="width: 80%;"></div>

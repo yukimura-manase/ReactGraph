@@ -1,0 +1,16 @@
+root: true
+parser: "@typescript-eslint/parser"
+plugins:
+  - "@typescript-eslint"
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - prettier
+rules: {
+  # [ 'React' must be in scope when using JSX ] Error対応
+  # https://zenn.dev/ryuu/scraps/583dad79532879
+  react/react-in-jsx-scope: 'off'
+}

@@ -1,0 +1,217 @@
+
+
+[ React-TypeScript-Appの環境構築 ]
+
+# React-TypeScriptの環境を作成
+npx create-react-app  population-app --template typescript
+
+    - リンターやフォーマッターを適切に設定すること
+
+    - リンターにはESLint、フォーマッターにはPrettierを使用すること
+
+    追加設定を実施しておく！
+
+
+
+
+
+
+【入門】create-react-appでReactとTypeScript環境を構築
+https://mo-gu-mo-gu.com/create-react-app-typescript/
+
+-------------------------------------------------------------------------------------------------------------------------
+
+[ ESLintの導入&設定 ]
+
+
+### ESLint導入 Ver. TypeScript
+
+yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+
+# または、、、
+
+npm i --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser
+
+
+### Prettier 用設定
+
+npm i --save-dev eslint-config-prettier
+
+
+使い方は extends の最後に指定するだけです。
+
+
+### React 用設定
+
+npm i --save-dev eslint-plugin-react eslint-plugin-react-hooks
+
+
+### 導入結果 => 実際の開発での設定
+
+root: true
+parser: "@typescript-eslint/parser"
+plugins:
+  - "@typescript-eslint"
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - prettier
+
+
+ESLint 設定を作成する技術
+https://zenn.dev/januswel/articles/402774d76424e71ac906
+
+
+ESLint の設定ファイル (.eslintrc) の各プロパティの意味を理解する
+https://maku.blog/p/j6iu7it/
+
+
+はじめてのESLint
+https://zenn.dev/shimabukuromeg/articles/76b9e3c62b6984
+
+
+決定版！イマドキの ESLint 設定！
+https://dev.classmethod.jp/articles/eslint-configurations-2020/
+
+
+
+
+< ESLint Ignore の設定方法 >
+
+
+ignoreファイルとは
+
+ignore(無視する)の名前のとおり、ESLintとかの実行対象から無視するファイルを指定するファイルのことです。
+
+ESLintなら.eslintignoreって名前です。 
+
+エラーが出てるけど内容を修正できないみたいなファイルを無視したりします。
+
+無視したいファイルの名前がfoo.jsだとしたらそのまま.eslintignoreにfoo.jsって書きます。ignoreファイルの書き方はもっと色々あるけど割愛。
+
+
+【Javascript】コード解析ツール ESLint を導入、設定する方法
+https://www.white-space.work/eslint-settings/#eslintignore_%E3%81%A7%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
+
+
+【JS】ESLintやPrettierなどのignoreファイルを--ignore-pathを使ってgitignoreに統一
+https://jsnotice.com/posts/2021-05-23/
+
+-------------------------------------------------------------------------------------------------------------------------
+
+[ Prettier の導入&設定 ]
+
+## Prettier導入
+
+Prettierは、コード整形のためのライブラリです。
+
+    yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
+
+[ .prettierrc おすすめの設定 ] で検索🔥
+
+.prettierrcはPrettierの設定ファイルです。
+プロジェクトルートに配置します。
+
+### インストール
+ npm i -D prettier 
+
+
+### 実行
+//フォーマットされているか確認する(フォーマットは実行しない)
+prettier --check .
+
+//ファイルを指定してフォーマット
+npx prettier --write js/main.js
+
+//すべてのファイルを指定してフォーマット
+npx prettier --write .
+
+
+### VS Codeでの実行
+
+    1.Prettier - Code formatterプラグインをインストールし、有効化します。
+
+    2.setting.jsonに追記します。
+    ※ファイル保存時に自動整形されるようになります。
+
+    setting.json
+    {
+    "editor.formatOnSave" : true
+    }
+
+### 設定ファイルの書式 => いくつかのファイル形式から選択することができる！
+
+    ※設定ファイルを用意する他に、package.jsonの中のキー「prettier」として書くこともできます。
+
+
+### 設定項目
+
+
+
+
+### 導入結果 => 実際の開発での設定
+
+module.exports = {
+  printWidth: 120, // 折り返す行の長さを指定
+  tabWidth: 2, // インデントのスペースの数を指定
+  semi: false, // ステートメントの最後にセミコロンを追加
+  parser: "typescript", // 使用するパーサーを指定
+  arrowParens: "avoid", // アロー関数の()が省略可能でも常に書く => 省略可能なときは()を書かない(デフォルト)
+  trailingComma: "es5", // 末尾のカンマの設定
+};
+
+
+
+.prettierrc
+https://qiita.com/takeshisakuma/items/bbb2cd2f1c65de70e363
+
+Prettierのおすすめ設定
+https://qiita.com/yuki0410_/items/abdfb164174d6618d728
+
+-------------------------------------------------------------------------------------------------------------------------
+
+[ Reduxの導入 ]
+
+npm install react-redux
+・reduxをインストールするためのコマンド
+
+
+yarn add redux
+
+
+
+
+[ AIQ ]
+
+ "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1"
+  }
+
+
+[ Pandas ]
+
+"devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1"
+  }
+
+
+
+
+

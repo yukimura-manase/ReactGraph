@@ -1,0 +1,15 @@
+
+
+Google Chart Tools は SVG を使ったグラフを表示するツールで、 JavaScript で記述します。
+
+
+Google Chart Tools とは
+http://yohshiy.blog.fc2.com/blog-entry-195.html
+
+Google Chart Tools入門
+https://www.javadrive.jp/google-chart-tools/
+
+
+
+
+

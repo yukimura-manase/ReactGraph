@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/* 初期化 */
+* {
+	margin:0;
+	padding:0;
+}
+
+.App-Header {
+    background-color: #6ea9d3;
+    text-align: center;
+    color: white;
+}
+
+.Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 10px 20px;
+}
+
+.Pref-CheckBox {
+    font-size: 20px;
+    line-height: 1.6;
+    width: 150px;
+    padding-left: 50px;
+}
+
+.Graph-Style-Support {
+    margin-top: 50px;
+}
+
+.NoCheck-MSG {
+    text-align: center;
+}
+
+.Graph-Block {
+    margin-left: 50px;
+}
+
+/* スマホサイズ */
+/* 最大値: 769px までは、以下のStyleを適用する */
+@media (max-width:769px){
+    .Container {
+        margin: 0 auto;
+        width: 90%;
+        gap: 15px 20px;
+    }
+}
